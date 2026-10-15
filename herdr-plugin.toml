@@ -1,0 +1,62 @@
+id = "gh"
+name = "GitHub PRs and Checks"
+version = "0.1.0"
+min_herdr_version = "0.8.2"
+description = "Pull request and CI summaries for Agents, with PR and checks actions"
+platforms = ["macos", "linux"]
+
+[[build]]
+command = ["go", "build", "-trimpath", "-o", "bin/herdr-plugin-gh", "."]
+
+[[startup]]
+command = ["./bin/herdr-plugin-gh", "refresh", "--cached"]
+
+[[events]]
+on = "pane.agent_detected"
+command = ["./bin/herdr-plugin-gh", "refresh-auto"]
+
+[[events]]
+on = "pane.focused"
+command = ["./bin/herdr-plugin-gh", "refresh-auto"]
+
+[[events]]
+on = "pane.agent_status_changed"
+command = ["./bin/herdr-plugin-gh", "refresh-auto"]
+
+[[actions]]
+id = "menu"
+title = "GitHub"
+contexts = ["pane"]
+command = ["./bin/herdr-plugin-gh", "menu"]
+
+[[actions]]
+id = "open"
+title = "Open or create pull request"
+contexts = ["pane"]
+command = ["./bin/herdr-plugin-gh", "open"]
+
+[[actions]]
+id = "open-checks"
+title = "View Checks"
+contexts = ["pane"]
+command = ["./bin/herdr-plugin-gh", "open-checks"]
+
+[[actions]]
+id = "copy-slack"
+title = "Copy PR for Slack"
+contexts = ["pane"]
+command = ["./bin/herdr-plugin-gh", "copy-slack"]
+
+[[actions]]
+id = "refresh"
+title = "Force refresh"
+contexts = ["global"]
+command = ["./bin/herdr-plugin-gh", "refresh"]
+
+[[panes]]
+id = "menu"
+title = "GitHub"
+placement = "popup"
+width = 66
+height = 11
+command = ["./bin/herdr-plugin-gh", "popup"]
