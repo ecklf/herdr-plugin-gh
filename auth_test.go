@@ -252,7 +252,7 @@ func TestStatusReadsRunConcurrently(t *testing.T) {
 				}
 			} else {
 				requireNoError(t, err)
-				if len(f.reports) != 1 || f.reports[0]["gh_review"] != "1\uf41f" || f.reports[0]["gh_passed"] != "1\uf42e" {
+				if len(f.reports) != 1 || f.reports[0]["gh_review"] != "\uf41f 1" || f.reports[0]["gh_passed"] != "1\uf42e" {
 					t.Fatal(f.reports)
 				}
 			}

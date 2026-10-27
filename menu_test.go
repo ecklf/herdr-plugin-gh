@@ -98,7 +98,7 @@ func TestMenuAlignmentAndColors(t *testing.T) {
 					t.Fatal(columns, row, view.Lines[row])
 				}
 			}
-			if !strings.HasSuffix(view.Lines[3], "\U000f06d6 standard") || !strings.HasSuffix(view.Lines[5], "3\uf41f") {
+			if !strings.HasSuffix(view.Lines[3], "\U000f06d6 standard") || !strings.HasSuffix(view.Lines[5], "\uf41f 3") {
 				t.Fatal(view)
 			}
 			if !strings.Contains(renderMenuLine(view.Lines[4], columns, nil, false), "\x1b[91m1\uf52f\x1b[39m") {

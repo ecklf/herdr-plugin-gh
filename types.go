@@ -140,7 +140,7 @@ func tokensFor(state State) map[string]string {
 	}
 	tokens["gh_pr"] = fmt.Sprintf("%s #%d", icons["pr"], state.PR.Number)
 	if state.PR.State == "OPEN" && state.ThreadsError == "" && state.Unresolved != nil && *state.Unresolved >= 0 {
-		tokens["gh_review"] = fmt.Sprintf("%d%s", *state.Unresolved, icons["comment"])
+		tokens["gh_review"] = fmt.Sprintf("%s %d", icons["comment"], *state.Unresolved)
 	}
 	if state.ChecksError == "" {
 		counts := checkCounts(state.Checks)

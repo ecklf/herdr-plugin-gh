@@ -228,7 +228,7 @@ func TestRefreshMetadataAndLiveCwd(t *testing.T) {
 	}
 	state := refreshFixture(t, f, refreshOptions{})
 	tokens := f.reports[len(f.reports)-1]
-	for key, want := range map[string]string{"gh_pr": "\uf407 #42", "gh_branch": "\uf418 feature/checks", "gh_passed": "1\uf42e", "gh_checks": "1 passed", "gh_review": "1\uf41f", "gh_actions": "", "gh_unresolved": ""} {
+	for key, want := range map[string]string{"gh_pr": "\uf407 #42", "gh_branch": "\uf418 feature/checks", "gh_passed": "1\uf42e", "gh_checks": "1 passed", "gh_review": "\uf41f 1", "gh_actions": "", "gh_unresolved": ""} {
 		if tokens[key] != want {
 			t.Errorf("%s: %q != %q", key, tokens[key], want)
 		}
